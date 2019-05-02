@@ -4,5 +4,14 @@ stages:
   - runScriptConfig:
       image: microsoft/dotnet
       shellScript: dotnet build
+- name: Publish
+  steps:
+  - runScriptConfig:
+      image: microsoft/dotnet
+      shellScript: dotnet publish -c Release -r linux-x64 -o out
+- name: Host
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
 timeout: 60
 notification: {}
