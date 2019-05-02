@@ -1,0 +1,8 @@
+stages:
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: java:8
+      shellScript: dotnet build
+timeout: 60
+notification: {}
