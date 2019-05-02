@@ -1,9 +1,8 @@
+stages:
+- name: Compile
+  steps:
+  - runScriptConfig:
+      image: java:8
+      shellScript: dotnet build
 timeout: 60
-notification:
-  recipients:
-  - recipient: k.jp0292@gmail.com
-    notifier: c-xtd2h:n-l4hbq
-  condition:
-  - Success
-  - Changed
-  - Failed
+notification: {}
