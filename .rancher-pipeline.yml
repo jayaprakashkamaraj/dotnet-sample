@@ -3,6 +3,6 @@ stages:
   steps:
   - runScriptConfig:
       image: java:8
-      shellScript: dotnet build
+      shellScript: docker build
 timeout: 60
 notification: {}
