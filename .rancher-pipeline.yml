@@ -14,10 +14,10 @@ stages:
         ls
 - name: Host
   steps:
-  - applyAppConfig:
-      catalogTemplate: cattle-global-data:helm-drone
-      version: 1.2.0
-      name: helloworld
-      targetNamespace: default
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: microsoft/dotnet
+      registry: 127.0.0.1:34320
 timeout: 60
 notification: {}
