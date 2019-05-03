@@ -16,11 +16,11 @@ kind: Deployment
 metadata:
   name: hello
   labels:
-    app: hello
+    app: sas
 spec:
-  replicas: 5
+  replicas: 1
   selector:
-    matchLabels:s
+    matchLabels:
       app: hello
   template:
     metadata:
@@ -30,7 +30,7 @@ spec:
       imagePullSecrets:
       - name: microsoft/dotnet
       containers:
-      - name: hello
+      - name: helloserver
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         ports:
         - containerPort: 80
