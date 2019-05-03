@@ -1,36 +1,31 @@
-kind: Service
 apiVersion: v1
-metadata:
-  name: hello
-spec:
-  selector:
-    app: hello
-  type: NodePort
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
----
-apiVersion: apps/v1
-kind: Deployment
+kind: Service
 metadata:
   name: hello
   labels:
-    app: sas
+    app: hello
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: hello
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: hello
   template:
     metadata:
       labels:
         app: hello
+        version: v1
     spec:
-      imagePullSecrets:
-      - name: microsoft/dotnet
       containers:
-      - name: helloserver
-        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
+      - name: hello
+        image: gcr.io/testkuber-239403/hello-dotnet:v1
+        imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 80
+        - containerPort: 8080
