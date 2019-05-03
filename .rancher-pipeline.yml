@@ -10,7 +10,6 @@ stages:
       image: microsoft/dotnet
       shellScript: |-
         dotnet publish -c Release -r linux-x64 -o out
-        dotnet run
         cd ./out
         ls
 - name: Host
