@@ -8,7 +8,10 @@ stages:
   steps:
   - runScriptConfig:
       image: microsoft/dotnet
-      shellScript: dotnet publish -c Release -r linux-x64 -o out
+      shellScript: |-
+        dotnet publish -c Release -r linux-x64 -o out
+        cd ./out
+        ls
 - name: Host
   steps:
   - applyYamlConfig:
