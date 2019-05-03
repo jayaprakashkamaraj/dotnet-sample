@@ -14,10 +14,10 @@ stages:
         ls
 - name: Host
   steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: microsoft/dotnet
-      registry: 127.0.0.1:34320
+  - applyAppConfig:
+      catalogTemplate: cattle-global-data:library-istio
+      version: 1.0.5
+      name: helm
+      targetNamespace: default
 timeout: 60
 notification: {}
