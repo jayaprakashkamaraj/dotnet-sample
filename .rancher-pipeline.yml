@@ -14,10 +14,7 @@ stages:
         ls
 - name: Host
   steps:
-  - applyAppConfig:
-      catalogTemplate: cattle-global-data:library-istio
-      version: 1.0.5
-      name: helm
-      targetNamespace: default
+  - applyYamlConfig:
+      path: ./deployment.yaml
 timeout: 60
 notification: {}
