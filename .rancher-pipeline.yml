@@ -15,8 +15,8 @@ stages:
 - name: Host
   steps:
   - applyAppConfig:
-      catalogTemplate: cattle-global-data:helm-docker-registry
-      version: 1.8.0
+      catalogTemplate: cattle-global-data:helm-drone
+      version: 2.0.0-rc.9
       name: helloworld
       targetNamespace: default
 timeout: 60
