@@ -14,7 +14,10 @@ stages:
         ls
 - name: Host
   steps:
-  - applyYamlConfig:
-      path: ./deployment.yaml
+  - applyAppConfig:
+      catalogTemplate: cattle-global-data:helm-docker-registry
+      version: 1.8.0
+      name: helloworld
+      targetNamespace: default
 timeout: 60
 notification: {}
